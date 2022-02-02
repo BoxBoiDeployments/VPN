@@ -1,5 +1,4 @@
 # The content of the top grid comment will be removed during sed processing and will not appear in the final configuration file
-# Fast_open must be false on heroku
 {
     "server":"127.0.0.1",
     "server_port":"2333",

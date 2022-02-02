@@ -3,16 +3,25 @@
 
 Click the button below to deploy, and remember to order a Star if it works:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aditya-shri/VPN/tree/main)
----
+(1): Select Repo on render.com
+(2): Select Region, Enter AppName.
+(3): Set The Following Variables In Environment Variables:
+- AppName
+- PASSWORD
+- ENCRYPT
+(4): If You Dont Know What To Enter In PASSWORD and ENCRYPT. Set Only AppName Environment Variable, Else Scroll Below This Readme to know more about the variables
 
-Native V2Ray deployment: <https://github.com/ygcaicn/v2ray-heroku>
+## Variable Info
 
----
+(1): ENCRYPT
+- Description: Encryption method, due to https blessing, choose the simplest one, default: chacha20-ietf-poly1305, others are（aes-256-cfb,chacha20-ietf-poly1305,salsa20,chacha20-ietf etc.）
+
+(2): PASSWORD
+- Description: The password of shadowsocks, you can use uuid as the password (http://www.uuid.online/ online generation). default: 5c301bb8-6c77-41a0-a606-4ba11bbab084
 
 ## 0. Attention
 
-Deployment requires registration of a heroku account, a email is required when registering a heroku account (otherwise the verification code cannot be brushed out). 
+Deployment requires registration of a render account, a email is required when registering a render account (otherwise the verification code cannot be brushed out). 
 
 An email address that can receive verification codes normally (@qq.com, @163.com are not acceptable):
 - gmail (Best) 
@@ -20,19 +29,17 @@ An email address that can receive verification codes normally (@qq.com, @163.com
 
 ## 1. Verification
 
-After the server is deployed, open app to display the webpage normally. After the address is filled with the path (for example: <https://test.herokuapp.com/static>), the 404 page is displayed, which means the deployment is successful.
+After the server is deployed, open app to display the webpage normally. After the address is filled with the path (for example: <https://test.onrender.com/static>), the 404 page is displayed, which means the deployment is successful.
 
 ## 2. Client Configuration
 
-QR code address: https://test.herokuapp.com/qr/vpn.png
-
-(Change test to your own app name. If you changed the QR_Path (path to qr png, filled during deployment) variable, also change the corresponding qr_img to the modified one)
+QR code address: https://test.onrender.com/qr_img/vpn.png
 
 Use the client (Shadowsocks recommended) to scan the QR code.
 
 **or**
 
-Use Configuration file -> Address: https://test.herokuapp.com/qr/
+Use Configuration file -> Address: https://test.onrender.com/qr_img/
 
 (Change test to your own app name)
 
@@ -43,7 +50,7 @@ Copy the details after opening and import it to the client.
 Manual configuration:
 
 ```sh
-Server: test.herokuapp.com (change test to your app name)
+Server: test.onrender.com (change test to your app name)
 Port: 443
 Password: The password filled in during deployment
 Encry Method: RC4-MD5 (or other methods you fill in)
@@ -63,17 +70,6 @@ windows:
 
 <https://github.com/shadowsocks/shadowsocks-windows/wiki/Shadowsocks-Windows-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E>
 
-## 3. Update
-
-To update the v2ray-plugin version, visit <https://dashboard.heroku.com/apps> and select the deployed app. If the VER variable is latest, directly select More --> Restart all dynos, the program will restart automatically and the progress can be confirmed through view Logs. 
-
-(Update the specified version: Settings --> Reveal Config Varsapp -->VER, modify to the required version number, such as 1.2)
-
-2020/03/01 The current version is working normally:
-
-+ shadowsocks-libev: 3.3.4+ds-2(debian apt)
-
-+ v2ray-plugin: v1.3.0
 
 # Reference
 
